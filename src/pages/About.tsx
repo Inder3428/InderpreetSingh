@@ -88,8 +88,8 @@ const About = () => {
             a lens that appreciates both chaos and calm. Whether it's the rawness of 
             city streets or the intimacy of a quiet portrait, I strive to preserve 
             emotions in their most authentic form. Photography, for me, is not just
-             a profession—it's a way of connecting with people, cultures, and the 
-             unscripted beauty of life.
+            a profession it's a way of connecting with people, cultures, and the 
+            unscripted beauty of life.
 
             </p>
           </motion.div>
@@ -131,7 +131,9 @@ const About = () => {
           >
             <h2 className="text-4xl font-light">Philosophy</h2>
             <p className="text-gray-400 leading-relaxed">
-              Photography is more than just capturing a moment. It’s about telling a story that lingers...
+            Photography is more than just capturing a moment. It is about telling a story that lingers, evokes emotion, and reveals the unseen. Every image should breathe life into its subject, preserving not just what is visible but the energy, atmosphere, and depth that make each moment unique.
+            Through a blend of technical precision and artistic intuition, I strive to create images that feel immersive, authentic, and timeless. Whether it is a fleeting glance, a dramatic play of light, or the quiet beauty in everyday life, my work is driven by the idea that photography is not just about seeing but feeling.
+
             </p>
           </motion.div>
         </div>
