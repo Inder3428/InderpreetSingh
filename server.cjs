@@ -4,41 +4,42 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 
-// ✅ This allows direct serving of images like: http://localhost:3001/images/Portraits/portrait001.jpg
+// 👉 Serve built frontend from 'dist'
+const distPath = path.join(__dirname, 'dist');
+app.use(express.static(distPath));
+
+// 👉 Catch-all for React routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
+// 👉 Serve images
 app.use('/images', express.static(path.join(__dirname, 'public', 'Images')));
 
-// ✅ API endpoint: /api/images/Portraits or /api/images/Street
+// 👉 API endpoint for categories like Portraits, Street
 app.get('/api/images/:category', (req, res) => {
   const { category } = req.params;
-
-  // Capitalize folder name: 'portraits' -> 'Portraits'
   const folder = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
   const folderPath = path.join(__dirname, 'public', 'Images', folder);
 
-  // ❌ If folder doesn't exist, send 404
   if (!fs.existsSync(folderPath)) {
     return res.status(404).json({ error: 'Category not found' });
   }
 
-  // ✅ Only include valid image files & ignore background files like bg.jpg
   const files = fs.readdirSync(folderPath).filter(file => {
     const ext = path.extname(file).toLowerCase();
     const validExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
-
-    // ❌ Skip 'bg.jpg' or anything starting with 'bg' if it's only for backgrounds
     const isBackground = file.toLowerCase().startsWith('bg');
-
     return validExtensions.includes(ext) && !isBackground;
   });
 
-  // ✅ Format the image data for the frontend
   const images = files.map((filename, index) => ({
     id: String(index + 1),
-    url: `/images/${folder}/${filename}`, // Used directly in <img src=...>
+    url: `/images/${folder}/${filename}`,
     category: folder.toLowerCase(),
     subcategory: folder === 'Portraits' ? 'outdoor' : 'street photography',
     title: folder,
