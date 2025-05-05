@@ -82,7 +82,15 @@ const About = () => {
           >
             <h2 className="text-4xl font-light">The Journey</h2>
             <p className="text-gray-400 leading-relaxed">
-              Hi, I’m Inderpreet Singh, an NYC-based photographer with a passion for capturing compelling visual stories...
+            Hi, I’m Inderpreet Singh, an NYC-based photographer with a passion for capturing 
+            compelling visual stories. My journey began with a borrowed camera and a 
+            curiosity for light. Over the years, I’ve learned to see the world through 
+            a lens that appreciates both chaos and calm. Whether it's the rawness of 
+            city streets or the intimacy of a quiet portrait, I strive to preserve 
+            emotions in their most authentic form. Photography, for me, is not just
+             a profession—it's a way of connecting with people, cultures, and the 
+             unscripted beauty of life.
+
             </p>
           </motion.div>
 
