@@ -13,43 +13,6 @@ interface Image {
   year: string;
 }
 
-const generatePortraitImages = (count: number): Image[] => {
-  return Array.from({ length: count }, (_, i) => {
-    const paddedNumber = String(i + 1).padStart(3, '0'); // 001, 002, etc.
-    return {
-      id: String(i + 1),
-      url: `/src/Images/Portraits/portrait${paddedNumber}.jpg`, // updated path and name
-      category: 'portraits',
-      subcategory: 'outdoor',
-      title: 'Portraits',
-      year: '2024'
-    };
-  });
-};
-
-
-const generateStreetImages = (count: number): Image[] => {
-  return Array.from({ length: count }, (_, i) => {
-    const paddedNumber = String(i + 1).padStart(3, '0'); // 001, 002, etc.
-    return {
-      id: String(i + 1),
-      url: `/src/Images/Street/street${paddedNumber}.jpg`, // updated path and name
-      category: 'street',
-      subcategory: 'street photography',
-      title: 'Street Stories / Urban Life',
-      year: '2024'
-    };
-  });
-};
-
-
-
-const images: Record<string, Image[]> = {
-  portraits: generatePortraitImages(18),
-  street: generateStreetImages(14),
-  // You can add 'urban' and 'nature' here if needed
-};
-
 const PortfolioCategory = () => {
   const { category } = useParams<{ category: string }>();
   const [viewMode, setViewMode] = useState<'carousel' | 'gallery'>('gallery');

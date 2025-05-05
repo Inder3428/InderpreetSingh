@@ -21,7 +21,6 @@ const Home = () => {
     offset: ["start start", "end end"]
   });
 
-  const [portraits, setPortraits] = useState<Image[]>([]);
   const [street, setStreet] = useState<Image[]>([]);
 
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [1, 0.3, 0.3, 1]);
@@ -29,9 +28,7 @@ const Home = () => {
 
   useEffect(() => {
     fetch("http://localhost:3001/api/images/Portraits")
-      .then(res => res.json())
-      .then(setPortraits);
-
+    // Removed unused fetch for portraits
     fetch("http://localhost:3001/api/images/Street")
       .then(res => res.json())
       .then(setStreet);
